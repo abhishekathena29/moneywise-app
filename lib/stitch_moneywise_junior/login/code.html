@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login - MoneyWise Junior</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#a06600",
+                        "surface-container": "#e7eeff",
+                        "secondary-fixed": "#79f7e3",
+                        "primary-fixed": "#c4e7ff",
+                        "on-surface": "#111c2c",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#263142",
+                        "inverse-on-surface": "#ebf1ff",
+                        "surface-container-high": "#dee8ff",
+                        "inverse-primary": "#7cd0ff",
+                        "on-background": "#111c2c",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#d8e3fa",
+                        "tertiary": "#7f5000",
+                        "surface-container-highest": "#d8e3fa",
+                        "on-secondary-container": "#006f63",
+                        "primary-container": "#007ba7",
+                        "on-tertiary-fixed": "#2a1700",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#00201c",
+                        "primary": "#006184",
+                        "background": "#f9f9ff",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#ffddb7",
+                        "on-error-container": "#93000a",
+                        "outline": "#6f787f",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#3f484e",
+                        "surface-bright": "#f9f9ff",
+                        "secondary-fixed-dim": "#59dbc7",
+                        "outline-variant": "#bfc8cf",
+                        "on-primary-fixed-variant": "#004c69",
+                        "on-primary-container": "#f5faff",
+                        "tertiary-fixed-dim": "#ffb95c",
+                        "secondary-container": "#76f4e0",
+                        "primary-fixed-dim": "#7cd0ff",
+                        "surface-container-low": "#f0f3ff",
+                        "surface-tint": "#00658b",
+                        "on-primary-fixed": "#001e2c",
+                        "surface-dim": "#cfdaf1",
+                        "secondary": "#006b5f",
+                        "on-tertiary-container": "#fff8f4",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "surface": "#f9f9ff",
+                        "on-secondary-fixed-variant": "#005047"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Be Vietnam Pro"],
+                        "label": ["Be Vietnam Pro"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Be Vietnam Pro', sans-serif; }
+        h1, h2, h3 { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col items-center justify-center p-4 md:p-8">
+<!-- Hero/Branding Section (Asymmetric Layout) -->
+<div class="max-w-5xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<!-- Left Side: Visual & Content -->
+<div class="hidden lg:flex flex-col space-y-8 relative">
+<!-- Decorative Element: Floating Badge -->
+<div class="absolute -top-12 -left-8 w-32 h-32 bg-secondary-container rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-pulse"></div>
+<div class="relative z-10 space-y-6">
+<div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant font-headline font-bold text-sm tracking-wide">
+<span class="material-symbols-outlined text-sm" data-icon="auto_awesome">auto_awesome</span>
+<span>LEARN BY DOING</span>
+</div>
+<h1 class="text-6xl font-extrabold tracking-tight leading-[1.1] text-primary">
+                    Start your <br/>
+<span class="text-secondary">Money Journey</span>
+</h1>
+<p class="text-on-surface-variant text-lg leading-relaxed max-w-md">
+                    Empowering the next generation with financial wisdom through play, discovery, and smart habits.
+                </p>
+<!-- Custom Achievement Badge (Design System) -->
+<div class="glass-panel p-6 rounded-lg flex items-center space-x-4 shadow-sm max-w-xs border border-white/20">
+<div class="w-12 h-12 rounded-full bg-tertiary-container flex items-center justify-center text-white" style="backdrop-filter: blur(4px);">
+<span class="material-symbols-outlined" data-icon="workspace_premium" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<div>
+<p class="font-headline font-bold text-on-surface">50k+ Juniors</p>
+<p class="text-sm text-on-surface-variant">Saving smarter every day</p>
+</div>
+</div>
+</div>
+<!-- Asymmetric Image Placement -->
+<div class="relative h-64 w-full rounded-xl overflow-hidden shadow-2xl transform rotate-2">
+<img alt="Happy child learning finance" class="w-full h-full object-cover" data-alt="a cheerful child smiling while holding a transparent piggy bank filled with colorful coins in a bright sunlit modern playroom" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLF66ZHvf62SXO5KNJyxP6s66Q4xNGKk2mRtDks_mNedL3aHMqeshjRXMeTmQGxWJLfjeUeGU-uVSFRAER5SC6xdHTiMzxB5b6JP6yqdBVw7Do5RSrvu42PjmwYw1JVRTxHBQajYTH3tGtBq0FWJjOPH-frDScJghnYBO63Oh3uVi8zCgFkFuNNGvO8JVZv4__BfOVzPERyP2GnkLmUowVnrdb7jqXdXaVaq4m2XsCAplSO9nk3lq2g8_N7szqC0RoWc6rLN_vC0w"/>
+</div>
+</div>
+<!-- Right Side: Login Form -->
+<div class="w-full max-w-md mx-auto">
+<div class="bg-surface-container-lowest rounded-xl p-8 md:p-10 shadow-[0px_20px_40px_rgba(17,28,44,0.06)] relative overflow-hidden">
+<!-- Top Accent Bar -->
+<div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-primary to-secondary"></div>
+<div class="mb-10 text-center lg:text-left">
+<h2 class="text-3xl font-extrabold text-on-surface mb-2 tracking-tight">Welcome Back!</h2>
+<p class="text-on-surface-variant font-medium">Log in to check your savings goals.</p>
+</div>
+<form class="space-y-6">
+<!-- Email Field -->
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1" for="email">Email Address</label>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors" data-icon="alternate_email">alternate_email</span>
+<input class="w-full pl-12 pr-4 py-4 bg-surface-container-low border-none rounded-full text-on-surface placeholder:text-outline focus:ring-2 focus:ring-primary/30 focus:bg-surface-container-lowest transition-all" id="email" placeholder="junior@moneywise.com" type="email"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-2">
+<div class="flex justify-between items-center px-1">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant" for="password">Password</label>
+<a class="text-xs font-bold text-primary hover:text-primary-container transition-colors" href="#">Forgot Password?</a>
+</div>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors" data-icon="lock_open">lock_open</span>
+<input class="w-full pl-12 pr-4 py-4 bg-surface-container-low border-none rounded-full text-on-surface placeholder:text-outline focus:ring-2 focus:ring-primary/30 focus:bg-surface-container-lowest transition-all" id="password" placeholder="••••••••" type="password"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline cursor-pointer hover:text-on-surface transition-colors" data-icon="visibility">visibility</span>
+</div>
+</div>
+<!-- Log In Button -->
+<button class="w-full py-4 px-6 bg-gradient-to-r from-primary to-primary-container text-white font-headline font-bold rounded-full shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 mt-2" type="submit">
+                        Log In
+                    </button>
+</form>
+<!-- Divider -->
+<div class="relative my-8">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-outline-variant/30"></div>
+</div>
+<div class="relative flex justify-center text-xs uppercase tracking-widest">
+<span class="bg-surface-container-lowest px-4 text-on-surface-variant font-bold">Or continue with</span>
+</div>
+</div>
+<!-- Social Login -->
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center space-x-2 py-3 px-4 bg-surface-container-high rounded-full hover:bg-surface-container-highest transition-colors font-bold text-sm text-on-surface">
+<img alt="Google" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqz5_RSJC4WSElmRnm_VguK6IZkFB4bf8Vz453xR7G5My7pzQBnz06SvGQ6NizWEEEOSsKRScYsWXEoBpgIEMJMPDYusIGGyRr-qAuBsOBti62d7pAYoYH1OZTeLjIKv6sV2IafP7XsKfuRTHjvCD2OTYHI_bG5P76pxXu0T_QrjNhJsv5-ql0p_1AFvVE10-5UV5JaiQr0JDUtyFwf0TEdWxBwY_JPhzpauma2JlAT44SQlYuOViL1qB0mfa8UO9bibDSGiolaAc"/>
+<span>Google</span>
+</button>
+<button class="flex items-center justify-center space-x-2 py-3 px-4 bg-surface-container-high rounded-full hover:bg-surface-container-highest transition-colors font-bold text-sm text-on-surface">
+<span class="material-symbols-outlined text-blue-600" data-icon="account_circle" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+<span>Apple ID</span>
+</button>
+</div>
+<!-- Sign Up Link -->
+<div class="mt-10 text-center">
+<p class="text-on-surface-variant text-sm font-medium">
+                        New to MoneyWise? 
+                        <a class="text-secondary font-bold hover:underline ml-1" href="#">Sign Up for free</a>
+</p>
+</div>
+</div>
+<!-- Footer Small Links -->
+<div class="mt-8 flex justify-center space-x-6 text-[11px] font-bold uppercase tracking-widest text-outline">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Help Center</a>
+</div>
+</div>
+</div>
+<!-- Decorative Bottom Gradient -->
+<div class="fixed bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-surface-container-high/50 to-transparent -z-10"></div>
+</body></html>

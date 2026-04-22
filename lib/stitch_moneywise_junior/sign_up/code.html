@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Join MoneyWise Junior</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#a06600",
+                        "surface-container": "#e7eeff",
+                        "secondary-fixed": "#79f7e3",
+                        "primary-fixed": "#c4e7ff",
+                        "on-surface": "#111c2c",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#263142",
+                        "inverse-on-surface": "#ebf1ff",
+                        "surface-container-high": "#dee8ff",
+                        "inverse-primary": "#7cd0ff",
+                        "on-background": "#111c2c",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#d8e3fa",
+                        "tertiary": "#7f5000",
+                        "surface-container-highest": "#d8e3fa",
+                        "on-secondary-container": "#006f63",
+                        "primary-container": "#007ba7",
+                        "on-tertiary-fixed": "#2a1700",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#00201c",
+                        "primary": "#006184",
+                        "background": "#f9f9ff",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#ffddb7",
+                        "on-error-container": "#93000a",
+                        "outline": "#6f787f",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#3f484e",
+                        "surface-bright": "#f9f9ff",
+                        "secondary-fixed-dim": "#59dbc7",
+                        "outline-variant": "#bfc8cf",
+                        "on-primary-fixed-variant": "#004c69",
+                        "on-primary-container": "#f5faff",
+                        "tertiary-fixed-dim": "#ffb95c",
+                        "secondary-container": "#76f4e0",
+                        "primary-fixed-dim": "#7cd0ff",
+                        "surface-container-low": "#f0f3ff",
+                        "surface-tint": "#00658b",
+                        "on-primary-fixed": "#001e2c",
+                        "surface-dim": "#cfdaf1",
+                        "secondary": "#006b5f",
+                        "on-tertiary-container": "#fff8f4",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "surface": "#f9f9ff",
+                        "on-secondary-fixed-variant": "#005047"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Be Vietnam Pro"],
+                        "label": ["Be Vietnam Pro"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .floating-orb {
+            position: absolute;
+            filter: blur(60px);
+            z-index: -1;
+            opacity: 0.6;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body text-on-surface min-h-screen selection:bg-primary-fixed selection:text-on-primary-fixed">
+<div class="fixed inset-0 overflow-hidden pointer-events-none">
+<div class="floating-orb w-[500px] h-[500px] bg-primary-fixed -top-48 -left-24 rounded-full"></div>
+<div class="floating-orb w-[400px] h-[400px] bg-secondary-fixed -bottom-24 -right-12 rounded-full"></div>
+<div class="floating-orb w-[300px] h-[300px] bg-tertiary-fixed top-1/2 left-2/3 rounded-full"></div>
+</div>
+<main class="relative z-10 min-h-screen flex items-center justify-center p-6 sm:p-12">
+<div class="w-full max-w-5xl grid lg:grid-cols-2 gap-12 lg:gap-0 items-stretch bg-surface-container-lowest/40 rounded-xl overflow-hidden shadow-sm">
+<div class="hidden lg:flex flex-col justify-between p-12 bg-primary relative overflow-hidden">
+<div class="relative z-20">
+<div class="flex items-center gap-3 mb-12">
+<div class="bg-white p-2 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">savings</span>
+</div>
+<span class="text-white font-headline font-extrabold text-2xl tracking-tight">MoneyWise Junior</span>
+</div>
+<div class="space-y-6">
+<h1 class="text-white font-headline text-5xl font-bold leading-tight">Your first step to <span class="text-secondary-fixed">money mastery!</span></h1>
+<p class="text-primary-fixed text-lg max-w-sm leading-relaxed">Join thousands of kids learning how to save, invest, and grow their digital piggy banks.</p>
+</div>
+</div>
+<div class="relative z-20 flex gap-4 mt-auto">
+<div class="bg-primary-container/30 backdrop-blur-md p-6 rounded-lg border border-white/10 w-full">
+<span class="material-symbols-outlined text-secondary-fixed text-4xl mb-4" style="font-variation-settings: 'FILL' 1;">emoji_events</span>
+<h3 class="text-white font-headline font-bold mb-1">Win Badges</h3>
+<p class="text-white/70 text-sm">Earn 50+ unique awards as you complete lessons.</p>
+</div>
+</div>
+<div class="absolute top-0 right-0 w-full h-full z-10 opacity-20 pointer-events-none">
+<img class="w-full h-full object-cover" data-alt="abstract playful geometry shapes and 3d elements in vibrant teal and blue tones with soft studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC509_ynIjqMqSO1eNRWSmkJoNowl8xCsoP1UbfifgRRZHpLKHud5UVXtoqPHrnPkvZ-4G2yXiwXBEUCUPs5e4occBymVEJmTAN5VIv4kvClCs2RH2pvSgBF1tYOuj161NohbtmLyGW2ZxpBinYS2glsgVXEs6RhdhPjeDlqQc2O5fwvUeNOURSD0RB5CZx329J9vTff0nsDW5bwTG4acnkIHunI6NSeon6mDRJD1egimAuoPEnSI2plHJh6TXmxEUQbzqnbixJzZQ"/>
+</div>
+</div>
+<div class="p-8 sm:p-12 lg:p-16 flex flex-col justify-center">
+<div class="mb-10 lg:hidden flex flex-col items-center">
+<span class="material-symbols-outlined text-primary text-5xl mb-4" style="font-variation-settings: 'FILL' 1;">savings</span>
+<h2 class="font-headline text-3xl font-extrabold text-center text-primary">MoneyWise Junior</h2>
+</div>
+<div class="mb-10">
+<h2 class="font-headline text-3xl font-bold text-on-surface mb-2">Create Account</h2>
+<p class="text-on-surface-variant">Ready for your financial adventure? Let's go!</p>
+</div>
+<form class="space-y-6" onsubmit="return false;">
+<div class="space-y-2">
+<label class="text-sm font-label font-semibold text-on-surface-variant ml-1" for="name">What's your name?</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border-none rounded-lg px-6 py-4 focus:ring-2 focus:ring-primary/30 transition-all outline-none text-on-surface placeholder:text-outline/50" id="name" placeholder="Super Student" type="text"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline/40">face</span>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-label font-semibold text-on-surface-variant ml-1" for="email">Parent or Junior's Email</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border-none rounded-lg px-6 py-4 focus:ring-2 focus:ring-primary/30 transition-all outline-none text-on-surface placeholder:text-outline/50" id="email" placeholder="hello@moneywise.com" type="email"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline/40">mail</span>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-label font-semibold text-on-surface-variant ml-1" for="password">Create a Secret Password</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border-none rounded-lg px-6 py-4 focus:ring-2 focus:ring-primary/30 transition-all outline-none text-on-surface placeholder:text-outline/50" id="password" placeholder="••••••••" type="password"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline/40">lock</span>
+</div>
+</div>
+<div class="flex items-start gap-3 py-2">
+<div class="pt-1">
+<input class="w-5 h-5 rounded border-outline-variant text-primary focus:ring-primary-fixed-dim bg-surface-container-low" id="terms" type="checkbox"/>
+</div>
+<label class="text-sm text-on-surface-variant leading-relaxed" for="terms">
+                            I agree to the <a class="text-primary font-semibold hover:underline" href="#">Terms &amp; Conditions</a> and the <a class="text-primary font-semibold hover:underline" href="#">Privacy Policy</a>.
+                        </label>
+</div>
+<button class="w-full bg-gradient-to-r from-primary to-primary-container text-white font-headline font-bold py-5 rounded-full shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 group" type="submit">
+                        Create Account
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</form>
+<div class="mt-8 flex flex-col items-center gap-4">
+<p class="text-on-surface-variant text-sm">
+                        Already have an account? <a class="text-primary font-bold hover:underline" href="#">Sign In</a>
+</p>
+<div class="w-full flex items-center gap-4 py-4">
+<div class="h-[1px] flex-1 bg-outline-variant/30"></div>
+<span class="text-xs font-label uppercase tracking-widest text-outline/60">Or join with</span>
+<div class="h-[1px] flex-1 bg-outline-variant/30"></div>
+</div>
+<div class="flex gap-4 w-full">
+<button class="flex-1 bg-surface-container-low py-4 rounded-lg flex items-center justify-center gap-3 hover:bg-surface-container-high transition-colors">
+<img alt="Google Logo" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiUpwLuiIkgMjEr25jEwxRV7IFV2HqCdQj5FOXtbCHgWx73hLtQHRou3dhmVLxe2QueflOBLAgWhnIVmTpuQalcnDEt0wy6JHHIFXcmfVcdAlsffzVZmaVW8leY2-ifEFbdgnbqFFQSaYzx8BcxUL1mHEkPCITHY1MvMS-bbRvcsHn15fyRrgggvtiyRJiO17tCSFOueB0W2ZDUVJXLRkAhdAQUg5NB5-EWBY6hp5KD2TzqnpRKazrBw0uRcLYtklRRzRTCs5rdZM"/>
+<span class="text-sm font-semibold text-on-surface-variant">Google</span>
+</button>
+<button class="flex-1 bg-surface-container-low py-4 rounded-lg flex items-center justify-center gap-3 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[#0066FF]" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+<span class="text-sm font-semibold text-on-surface-variant">School ID</span>
+</button>
+</div>
+</div>
+<div class="mt-12 flex justify-center items-center gap-4 opacity-50">
+<span class="material-symbols-outlined text-xl">verified_user</span>
+<span class="text-xs font-medium uppercase tracking-tight">Kid-Safe Certified Experience</span>
+</div>
+</div>
+</div>
+</main>
+<div class="fixed bottom-8 right-8 z-50 group hidden md:block">
+<div class="absolute -top-16 -left-12 bg-white px-4 py-2 rounded-2xl shadow-xl shadow-on-surface/5 border border-surface-container-high opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+<p class="text-xs font-bold text-primary italic whitespace-nowrap">Need help, future pro?</p>
+<div class="absolute bottom-[-6px] left-8 w-3 h-3 bg-white rotate-45 border-r border-b border-surface-container-high"></div>
+</div>
+<div class="w-16 h-16 rounded-full bg-tertiary-container flex items-center justify-center text-white shadow-lg hover:rotate-12 transition-transform cursor-pointer">
+<span class="material-symbols-outlined text-3xl">psychology_alt</span>
+</div>
+</div>
+</body></html>

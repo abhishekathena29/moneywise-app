@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface-variant": "#3f484e",
+                    "on-background": "#111c2c",
+                    "on-error-container": "#93000a",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-highest": "#d8e3fa",
+                    "on-tertiary-fixed": "#2a1700",
+                    "tertiary-fixed-dim": "#ffb95c",
+                    "primary-fixed": "#c4e7ff",
+                    "on-tertiary-fixed-variant": "#653e00",
+                    "on-secondary-fixed-variant": "#005047",
+                    "primary-fixed-dim": "#7cd0ff",
+                    "secondary": "#006b5f",
+                    "on-tertiary": "#ffffff",
+                    "surface-container": "#e7eeff",
+                    "surface-tint": "#00658b",
+                    "surface-bright": "#f9f9ff",
+                    "on-secondary-container": "#006f63",
+                    "inverse-surface": "#263142",
+                    "tertiary-container": "#a06600",
+                    "primary": "#006184",
+                    "surface-container-low": "#f0f3ff",
+                    "surface": "#f9f9ff",
+                    "on-error": "#ffffff",
+                    "surface-variant": "#d8e3fa",
+                    "inverse-primary": "#7cd0ff",
+                    "secondary-container": "#76f4e0",
+                    "background": "#f9f9ff",
+                    "on-primary-fixed-variant": "#004c69",
+                    "on-primary-fixed": "#001e2c",
+                    "error": "#ba1a1a",
+                    "surface-dim": "#cfdaf1",
+                    "on-surface": "#111c2c",
+                    "primary-container": "#007ba7",
+                    "on-tertiary-container": "#fff8f4",
+                    "on-secondary-fixed": "#00201c",
+                    "on-primary-container": "#f5faff",
+                    "outline-variant": "#bfc8cf",
+                    "inverse-on-surface": "#ebf1ff",
+                    "error-container": "#ffdad6",
+                    "tertiary": "#7f5000",
+                    "surface-container-high": "#dee8ff",
+                    "secondary-fixed-dim": "#59dbc7",
+                    "tertiary-fixed": "#ffddb7",
+                    "outline": "#6f787f",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed": "#79f7e3",
+                    "on-secondary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Plus Jakarta Sans"],
+                    "body": ["Be Vietnam Pro"],
+                    "label": ["Be Vietnam Pro"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Be Vietnam Pro', sans-serif; }
+        h1, h2, h3 { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="w-full sticky top-0 z-50 bg-cyan-50/80 backdrop-blur-xl flex justify-between items-center px-6 py-4 shadow-sm shadow-cyan-900/5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img alt="Kid profile picture" class="w-full h-full object-cover" data-alt="Close-up portrait of a happy young child with a bright smile, soft natural lighting, warm and friendly atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOx3X8VDJ1DZ_KeqYrsXJSZo-6xOS6erPumt_qrJZJMn0z9Bp7HJnvZlq8L9E_b40uvp3Thd6zzan6X2xSYpDCN6Q1PYiNR1_Uu1mqy6gKzGNZ2D1HdlS8JbF8v-hHrpM_hSZQ5qNv_SNDegbVstWZU4wbHXT0hrt8HIzwWcrbMLxkcVJYS7wnJT35W6V2yPpWp_4RJXPMa70T0k3crbi3rvru5uTVY93X7rgxXT2pigv0s3HodqZGPl9httddsRna26Qr-MemzMI"/>
+</div>
+<span class="text-xl font-extrabold text-cyan-800 tracking-tight">MoneyWise Junior</span>
+</div>
+<button class="text-cyan-700 hover:scale-105 transition-transform active:scale-95 duration-150">
+<span class="material-symbols-outlined text-2xl">emoji_events</span>
+</button>
+</header>
+<main class="px-6 pt-8 space-y-10">
+<!-- Hero Profile Section -->
+<section class="relative">
+<div class="bg-gradient-to-br from-primary to-primary-container p-8 rounded-xl shadow-lg relative overflow-hidden">
+<!-- Abstract Texture Decor -->
+<div class="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-10 -left-10 w-40 h-40 bg-secondary-container/20 rounded-full blur-2xl"></div>
+<div class="relative z-10 flex flex-col items-center text-center">
+<div class="w-24 h-24 rounded-full border-4 border-white/30 p-1 mb-4 shadow-xl">
+<img alt="Avatar" class="w-full h-full object-cover rounded-full" data-alt="Portrait of a joyful kid in a yellow sweater, bright studio lighting, vibrant and energetic mood" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQMyG9HsDECDon33UzyMFhlMVAbBvj5p1dzOHSke5cjiIxtUgBKHZLhlrJkYcXb5FLtThZfwLxYZdlISuGJskomPsDo7GG_MFWQDizNzQpUOrUW5izCbyzdd1EsT0vMV0WYBHhI8Asanvb_r-pn0oANBHP4cvoRiG0wu_9i1QhZLIwr3jRDtsNUFE75Cy45yKOaZvN3ygInHoFEDxyAjQQ6DkTPVXL3uzkn8LV47RqPy8R6jpZnx2NzNxRuTqS7KyMH8ZVoP4m1JE"/>
+</div>
+<h1 class="text-white text-3xl font-bold tracking-tight mb-1">Alex Chen</h1>
+<div class="inline-flex items-center px-4 py-1.5 bg-white/20 backdrop-blur-md rounded-full text-on-primary-container text-sm font-semibold mb-6">
+                        Level 12 Financial Explorer
+                    </div>
+<div class="w-full bg-white/10 rounded-lg p-4 backdrop-blur-sm">
+<p class="text-white/80 text-xs uppercase tracking-widest font-bold mb-1">Financial Impact Score</p>
+<div class="text-white text-5xl font-black tabular-nums tracking-tighter">850</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Bento Grid -->
+<section class="grid grid-cols-2 gap-4">
+<!-- Streak Card -->
+<div class="bg-surface-container-lowest p-6 rounded-lg flex flex-col items-center justify-center text-center shadow-sm">
+<span class="material-symbols-outlined text-tertiary text-4xl mb-2" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<div class="text-2xl font-bold text-on-background">7 days</div>
+<p class="text-xs text-on-surface-variant font-medium">Daily Streak</p>
+</div>
+<!-- Savings Goal Card -->
+<div class="bg-surface-container-lowest p-6 rounded-lg flex flex-col items-center justify-center text-center shadow-sm">
+<span class="material-symbols-outlined text-secondary text-4xl mb-2" style="font-variation-settings: 'FILL' 1;">savings</span>
+<div class="text-2xl font-bold text-on-background">$142.50</div>
+<p class="text-xs text-on-surface-variant font-medium">Total Saved</p>
+</div>
+</section>
+<!-- Badge Gallery -->
+<section>
+<div class="flex justify-between items-end mb-6">
+<div>
+<h2 class="text-2xl font-bold text-on-background tracking-tight">Badge Gallery</h2>
+<p class="text-sm text-on-surface-variant">Your journey in achievements</p>
+</div>
+<button class="text-primary font-bold text-sm">View All</button>
+</div>
+<div class="grid grid-cols-3 gap-6">
+<!-- Smart Saver -->
+<div class="flex flex-col items-center space-y-3">
+<div class="w-20 h-20 bg-tertiary-container/20 rounded-full flex items-center justify-center relative shadow-inner overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-tr from-tertiary/20 to-transparent"></div>
+<span class="material-symbols-outlined text-4xl text-tertiary" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+<span class="text-[11px] font-bold text-on-surface text-center leading-tight">Smart Saver</span>
+</div>
+<!-- Budget Boss -->
+<div class="flex flex-col items-center space-y-3">
+<div class="w-20 h-20 bg-secondary-container/20 rounded-full flex items-center justify-center relative shadow-inner">
+<div class="absolute inset-0 bg-gradient-to-tr from-secondary/20 to-transparent"></div>
+<span class="material-symbols-outlined text-4xl text-secondary" style="font-variation-settings: 'FILL' 1;">payments</span>
+</div>
+<span class="text-[11px] font-bold text-on-surface text-center leading-tight">Budget Boss</span>
+</div>
+<!-- Investor Apprentice -->
+<div class="flex flex-col items-center space-y-3 opacity-40 grayscale">
+<div class="w-20 h-20 bg-surface-container-highest rounded-full flex items-center justify-center relative border-2 border-dashed border-outline-variant">
+<span class="material-symbols-outlined text-4xl text-outline">trending_up</span>
+</div>
+<span class="text-[11px] font-bold text-on-surface-variant text-center leading-tight">Investor Apprentice</span>
+</div>
+<!-- Goal Crusher -->
+<div class="flex flex-col items-center space-y-3">
+<div class="w-20 h-20 bg-primary-container/20 rounded-full flex items-center justify-center relative shadow-inner">
+<div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent"></div>
+<span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'FILL' 1;">flag_circle</span>
+</div>
+<span class="text-[11px] font-bold text-on-surface text-center leading-tight">Goal Crusher</span>
+</div>
+<!-- Master Minds -->
+<div class="flex flex-col items-center space-y-3 opacity-40 grayscale">
+<div class="w-20 h-20 bg-surface-container-highest rounded-full flex items-center justify-center relative border-2 border-dashed border-outline-variant">
+<span class="material-symbols-outlined text-4xl text-outline">psychology</span>
+</div>
+<span class="text-[11px] font-bold text-on-surface-variant text-center leading-tight">Master Mind</span>
+</div>
+<!-- Early Bird -->
+<div class="flex flex-col items-center space-y-3 opacity-40 grayscale">
+<div class="w-20 h-20 bg-surface-container-highest rounded-full flex items-center justify-center relative border-2 border-dashed border-outline-variant">
+<span class="material-symbols-outlined text-4xl text-outline">wb_sunny</span>
+</div>
+<span class="text-[11px] font-bold text-on-surface-variant text-center leading-tight">Early Bird</span>
+</div>
+</div>
+</section>
+<!-- Personal Settings & Links -->
+<section class="pb-10">
+<h2 class="text-lg font-bold text-on-background mb-4 px-2">Account &amp; Support</h2>
+<div class="bg-surface-container-low rounded-lg overflow-hidden">
+<button class="w-full flex items-center justify-between p-5 hover:bg-surface-container transition-colors group">
+<div class="flex items-center gap-4">
+<div class="p-2 bg-white rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-primary">person_outline</span>
+</div>
+<span class="font-medium text-on-surface">Personal Information</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform">chevron_right</span>
+</button>
+<div class="mx-5 h-px bg-outline-variant/10"></div>
+<button class="w-full flex items-center justify-between p-5 hover:bg-surface-container transition-colors group">
+<div class="flex items-center gap-4">
+<div class="p-2 bg-white rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-primary">notifications_none</span>
+</div>
+<span class="font-medium text-on-surface">Learning Reminders</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform">chevron_right</span>
+</button>
+<div class="mx-5 h-px bg-outline-variant/10"></div>
+<button class="w-full flex items-center justify-between p-5 hover:bg-surface-container transition-colors group">
+<div class="flex items-center gap-4">
+<div class="p-2 bg-white rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-primary">security</span>
+</div>
+<span class="font-medium text-on-surface">Security &amp; Privacy</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform">chevron_right</span>
+</button>
+<div class="mx-5 h-px bg-outline-variant/10"></div>
+<button class="w-full flex items-center justify-between p-5 hover:bg-surface-container transition-colors group">
+<div class="flex items-center gap-4">
+<div class="p-2 bg-white rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-error">logout</span>
+</div>
+<span class="font-medium text-error">Sign Out</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform">chevron_right</span>
+</button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/70 backdrop-blur-2xl z-50 rounded-t-[3rem] shadow-[0px_-10px_40px_rgba(17,28,44,0.06)]">
+<button class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:bg-cyan-50 transition-all">
+<span class="material-symbols-outlined mb-1">dashboard</span>
+<span class="font-medium text-[11px]">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:bg-cyan-50 transition-all">
+<span class="material-symbols-outlined mb-1">auto_stories</span>
+<span class="font-medium text-[11px]">Lessons</span>
+</button>
+<button class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:bg-cyan-50 transition-all">
+<span class="material-symbols-outlined mb-1">lightbulb</span>
+<span class="font-medium text-[11px]">Workshop</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-cyan-100 text-cyan-800 rounded-full px-5 py-2 scale-110 transition-all duration-300 ease-out">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-medium text-[11px]">Profile</span>
+</button>
+</nav>
+</body></html>

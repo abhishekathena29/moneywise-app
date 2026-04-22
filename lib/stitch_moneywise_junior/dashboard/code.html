@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MoneyWise Junior - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#3f484e",
+                        "on-background": "#111c2c",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-highest": "#d8e3fa",
+                        "on-tertiary-fixed": "#2a1700",
+                        "tertiary-fixed-dim": "#ffb95c",
+                        "primary-fixed": "#c4e7ff",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "on-secondary-fixed-variant": "#005047",
+                        "primary-fixed-dim": "#7cd0ff",
+                        "secondary": "#006b5f",
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#e7eeff",
+                        "surface-tint": "#00658b",
+                        "surface-bright": "#f9f9ff",
+                        "on-secondary-container": "#006f63",
+                        "inverse-surface": "#263142",
+                        "tertiary-container": "#a06600",
+                        "primary": "#006184",
+                        "surface-container-low": "#f0f3ff",
+                        "surface": "#f9f9ff",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#d8e3fa",
+                        "inverse-primary": "#7cd0ff",
+                        "secondary-container": "#76f4e0",
+                        "background": "#f9f9ff",
+                        "on-primary-fixed-variant": "#004c69",
+                        "on-primary-fixed": "#001e2c",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#cfdaf1",
+                        "on-surface": "#111c2c",
+                        "primary-container": "#007ba7",
+                        "on-tertiary-container": "#fff8f4",
+                        "on-secondary-fixed": "#00201c",
+                        "on-primary-container": "#f5faff",
+                        "outline-variant": "#bfc8cf",
+                        "inverse-on-surface": "#ebf1ff",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#7f5000",
+                        "surface-container-high": "#dee8ff",
+                        "secondary-fixed-dim": "#59dbc7",
+                        "tertiary-fixed": "#ffddb7",
+                        "outline": "#6f787f",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#79f7e3",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Be Vietnam Pro"],
+                        "label": ["Be Vietnam Pro"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Be Vietnam Pro', sans-serif; }
+        h1, h2, h3, .brand-font { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-28">
+<!-- TopAppBar -->
+<nav class="w-full sticky top-0 z-50 bg-cyan-50/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-sm shadow-cyan-900/5 flex justify-between items-center px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container overflow-hidden ring-2 ring-white shadow-md">
+<img alt="Kid profile picture" class="w-full h-full object-cover" data-alt="Close-up 3D avatar of a friendly cartoon boy with messy hair and a bright smile, clean lighting, vibrant colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBApQOOhInqSrhh3G44gNo4aEwLTU-nuw2xByFwwc1LTzmaty-veAa6NLUD89Uq_V7eydF11SY05fpmOadY5OG7h3B0Pu3mwMq9kMh7TlY8nr_hv2OlwjknUNHYzFJ1e-vZLkXomjDWj4W0ychwVr37fRWiLD8r-O62kg5srVNs5EwecgBWKfaRHTAx-BhG9NqEhh2UD08e6TCnO7HV7oTiwF1X6qWHaqn3EPspiBtEGr9K8QpKS54FLuwD3PaST9mnAMkgECZxfnI"/>
+</div>
+<span class="text-xl font-extrabold text-cyan-800 dark:text-cyan-200 Plus Jakarta Sans font-bold tracking-tight">MoneyWise Junior</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="hover:scale-105 transition-transform active:scale-95 duration-150 p-2 text-cyan-700">
+<span class="material-symbols-outlined" data-icon="emoji_events">emoji_events</span>
+</button>
+</div>
+</nav>
+<main class="px-6 py-6 space-y-8 max-w-md mx-auto">
+<!-- Welcome Hero -->
+<section class="space-y-1">
+<p class="text-on-surface-variant font-medium text-sm tracking-wide">GOOD MORNING,</p>
+<h1 class="text-3xl font-extrabold text-on-background -tracking-wide">Hi Alex! 👋</h1>
+</section>
+<!-- Bento Layout: Daily Goal & Streak -->
+<div class="grid grid-cols-5 gap-4">
+<!-- Daily Goal Ring -->
+<div class="col-span-3 bg-surface-container-lowest rounded-lg p-5 shadow-sm relative overflow-hidden flex flex-col justify-between aspect-square">
+<div class="z-10">
+<p class="text-xs font-bold text-on-surface-variant mb-1">DAILY GOAL</p>
+<h3 class="text-lg font-bold leading-tight">Learn 3 new things</h3>
+</div>
+<div class="relative flex items-center justify-center py-2">
+<svg class="w-24 h-24 transform -rotate-90">
+<circle class="text-surface-container" cx="48" cy="48" fill="transparent" r="40" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-primary" cx="48" cy="48" fill="transparent" r="40" stroke="currentColor" stroke-dasharray="251.2" stroke-dashoffset="62.8" stroke-linecap="round" stroke-width="8"></circle>
+</svg>
+<span class="absolute text-xl font-extrabold text-primary">2/3</span>
+</div>
+<div class="bg-primary/5 rounded-full px-3 py-1 text-[10px] font-bold text-primary self-start mt-2">
+                    SO CLOSE!
+                </div>
+</div>
+<!-- Daily Streak / Rewards -->
+<div class="col-span-2 space-y-4">
+<div class="bg-tertiary-container/10 rounded-lg p-4 flex flex-col items-center justify-center flex-1 h-full border border-tertiary-container/20">
+<span class="material-symbols-outlined text-tertiary text-3xl mb-1" data-icon="local_fire_department" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span class="text-2xl font-black text-tertiary tracking-tighter">5</span>
+<p class="text-[10px] font-bold text-tertiary">DAY STREAK</p>
+</div>
+<div class="bg-secondary-container/20 rounded-lg p-4 flex flex-col items-center justify-center flex-1 h-full border border-secondary-container/30">
+<span class="material-symbols-outlined text-secondary text-3xl mb-1" data-icon="monetization_on" style="font-variation-settings: 'FILL' 1;">monetization_on</span>
+<span class="text-2xl font-black text-secondary tracking-tighter">120</span>
+<p class="text-[10px] font-bold text-secondary">COINS</p>
+</div>
+</div>
+</div>
+<!-- Savings Goal Card -->
+<section class="bg-surface-container-lowest rounded-lg p-6 shadow-sm space-y-4 overflow-hidden relative">
+<div class="absolute -top-4 -right-4 w-24 h-24 bg-primary/5 rounded-full flex items-center justify-center opacity-50 rotate-12">
+<span class="material-symbols-outlined text-5xl text-primary/20" data-icon="pedal_bike">pedal_bike</span>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<span class="text-[10px] font-extrabold uppercase tracking-widest text-on-surface-variant">MY SAVINGS GOAL</span>
+<h2 class="text-xl font-bold mt-1">New Blue Bike</h2>
+</div>
+<div class="bg-surface-container px-3 py-1 rounded-full text-xs font-bold text-primary">
+                    $15 / $50
+                </div>
+</div>
+<div class="space-y-2">
+<div class="h-4 w-full bg-secondary-container rounded-xl overflow-hidden">
+<div class="h-full w-[30%] bg-gradient-to-r from-secondary to-primary rounded-xl"></div>
+</div>
+<div class="flex justify-between text-[11px] font-bold text-on-surface-variant">
+<span>KEEP IT UP!</span>
+<span>30% SAVED</span>
+</div>
+</div>
+<button class="w-full bg-gradient-to-r from-primary to-primary-container text-white py-3 rounded-full font-bold shadow-md hover:scale-[1.02] transition-transform active:scale-95 text-sm">
+                Add Savings
+            </button>
+</section>
+<!-- Current Lesson Card -->
+<section class="relative group cursor-pointer">
+<div class="absolute inset-0 bg-gradient-to-br from-cyan-600 to-cyan-800 rounded-lg transform translate-y-2 scale-[0.98] opacity-20 blur-xl"></div>
+<div class="relative bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm flex flex-col md:flex-row">
+<div class="h-40 md:w-1/3 relative bg-cyan-100">
+<img alt="The Power of Interest" class="w-full h-full object-cover" data-alt="Playful 3D stylized money tree growing out of a small jar, warm golden sparkles, soft focus teal background, high-end 3D render" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqBxOC4boZtZdCC2DixKJQt5g2yvn7eQbPMQfscrNq0SuvP0bkXsRtF2IizvaLMLyaYBRSYVwulswVvuLslaTjQ8vi11vTlX1p-tCN0JAONP3tesVgImFte2QRS2jgP9ry0B6cDEDNQlxTaZ5HT-iSumSuMWqVIYVXE9BCFxDqfrvDG7fKMo6jfwh40Zngq9F4hUVRbdaYUJlCG_2fFrRJIooGAqFbYG9kwMKz1aPQPitWRQlgySpZ3ZrdYwX4bi0nbFfz1xSWjeo"/>
+<div class="absolute inset-0 bg-black/10"></div>
+<div class="absolute top-3 left-3 bg-white/90 backdrop-blur px-2 py-1 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-cyan-600 text-[14px]" data-icon="play_circle" style="font-variation-settings: 'FILL' 1;">play_circle</span>
+<span class="text-[10px] font-bold text-cyan-800">LESSON 4</span>
+</div>
+</div>
+<div class="p-5 flex flex-col justify-center gap-1 md:w-2/3">
+<h3 class="text-lg font-extrabold text-on-background leading-tight">The Power of Interest</h3>
+<p class="text-xs text-on-surface-variant leading-relaxed mb-3">Watch your money grow like a magic beanstalk! 🌿</p>
+<div class="flex items-center justify-between">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full border-2 border-white bg-slate-200 overflow-hidden">
+<img alt="User" class="w-full h-full" data-alt="Cartoon avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhpIms8o9rYshTj1lJ0l46-9mfMxM6AN5trFbI_h4m2I0leYfKXkNJiMTVY_uGU0TsPwDlON4VVvlxkv9u9RxuIm8Jby0TpmMo_jcvrvD2LWL6YvFvJmbeVqXF4iifU8rgJF-XM8zcaZOUYvqzaOgFKkkCYzB2SnlpPLh3KEa7ndxZ2KBCUTNzVFujexeSPv7ZVxY1kiPhf-dZm46gqksDvcR5ZYwaviwP4M2V1fo0Qu7yCb71jSiXEp0SjU1A6eRNS5StcGXTjSg"/>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-white bg-slate-300 overflow-hidden">
+<img alt="User" class="w-full h-full" data-alt="Cartoon avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfpsSmZJJ4HwPjW-_1IcsFZEXKEJzTqVHNZhJ5mf4Y0NGy7Y_gaVOzzZTqtkD6VEMvQQ5YknjfOydYnEp725SIDJ_JeOi8lNS4qi5XYWGnDlHh4S0varxPz5qg3J9Jl7FqajsSsPzPUyIdUMbO00Mye5dzXW2z5o44-Bl5rJmLEAbGxkt1To712D-9t5tO5iWl_fjiwpCKKYEkGHHDvY_j7AfkKiu-d1CmsPpaZjh07_hkuDZPU4J57U8y3owj7v9DzoUrmFjUasc"/>
+</div>
+<div class="w-6 h-6 rounded-full border-2 border-white bg-cyan-200 flex items-center justify-center text-[8px] font-bold text-cyan-800">
+                                +12
+                            </div>
+</div>
+<span class="text-[10px] font-bold text-on-surface-variant">450 kids started this today</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Achievement Badge - Custom System Component -->
+<section class="flex items-center gap-4 bg-surface-container-low rounded-lg p-4 border border-outline-variant/15">
+<div class="relative">
+<div class="w-16 h-16 rounded-full bg-tertiary-container/30 backdrop-blur-sm flex items-center justify-center shadow-inner">
+<span class="material-symbols-outlined text-3xl text-tertiary" data-icon="workspace_premium" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<div class="absolute -bottom-1 -right-1 bg-white rounded-full p-1 shadow-sm">
+<span class="material-symbols-outlined text-xs text-secondary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<div>
+<p class="text-xs font-bold text-tertiary">NEW BADGE!</p>
+<h4 class="text-sm font-extrabold leading-tight">Master of Minting</h4>
+<p class="text-[11px] text-on-surface-variant mt-0.5">Completed your first savings deposit.</p>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/70 dark:bg-slate-950/70 backdrop-blur-2xl z-50 rounded-t-[3rem]" style="box-shadow: 0px 20px 40px rgba(17, 28, 44, 0.06);">
+<!-- Home (Active) -->
+<div class="flex flex-col items-center justify-center bg-cyan-100 dark:bg-cyan-900/40 text-cyan-800 dark:text-cyan-100 rounded-full px-5 py-2 scale-110 transition-all duration-300 ease-out">
+<span class="material-symbols-outlined text-[24px]" data-icon="dashboard" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="Plus Jakarta Sans - font-medium text-[11px]">Home</span>
+</div>
+<!-- Lessons -->
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:bg-cyan-50 dark:hover:bg-cyan-950/50 transition-colors">
+<span class="material-symbols-outlined text-[24px]" data-icon="auto_stories">auto_stories</span>
+<span class="Plus Jakarta Sans - font-medium text-[11px]">Lessons</span>
+</div>
+<!-- Workshop -->
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:bg-cyan-50 dark:hover:bg-cyan-950/50 transition-colors">
+<span class="material-symbols-outlined text-[24px]" data-icon="lightbulb">lightbulb</span>
+<span class="Plus Jakarta Sans - font-medium text-[11px]">Workshop</span>
+</div>
+<!-- Profile -->
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-5 py-2 hover:bg-cyan-50 dark:hover:bg-cyan-950/50 transition-colors">
+<span class="material-symbols-outlined text-[24px]" data-icon="person">person</span>
+<span class="Plus Jakarta Sans - font-medium text-[11px]">Profile</span>
+</div>
+</nav>
+</body></html>
