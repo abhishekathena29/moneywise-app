@@ -7,8 +7,11 @@ import '../features/auth/ui/login_screen.dart';
 import '../features/auth/ui/sign_up_screen.dart';
 import '../features/auth/ui/splash_screen.dart';
 import '../features/dashboard/ui/dashboard_screen.dart';
+import '../features/chatbot/ui/chatbot_screen.dart';
+import '../features/learning/ui/certificate_screen.dart';
 import '../features/learning/ui/learning_modules_screen.dart';
 import '../features/learning/ui/lesson_detail_screen.dart';
+import '../features/learning/ui/lesson_quiz_screen.dart';
 import '../features/onboarding/ui/onboarding_one_screen.dart';
 import '../features/onboarding/ui/onboarding_two_screen.dart';
 import '../features/profile/ui/profile_screen.dart';
@@ -47,6 +50,9 @@ class RootFlowScreen extends StatelessWidget {
         AppRoute.dashboard => const DashboardScreen(),
         AppRoute.learningModules => const LearningModulesScreen(),
         AppRoute.lessonDetail => const LessonDetailScreen(),
+        AppRoute.lessonQuiz => const LessonQuizScreen(),
+        AppRoute.certificate => const CertificateScreen(),
+        AppRoute.chatbot => const ChatbotScreen(),
         AppRoute.toolsHub => const ToolsHubScreen(),
         AppRoute.monthlyTracker => const MonthlyTrackerScreen(),
         AppRoute.savingsGoalCalculator => const SavingsGoalScreen(),

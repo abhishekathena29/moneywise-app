@@ -1,76 +1,136 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/models/app_models.dart';
 import '../../../core/models/user_app_data.dart';
 import '../../user_data/providers/user_data_provider.dart';
+import '../data/lesson_repository.dart';
+import '../models/lesson_module.dart' show LessonModule;
 
 class LearningProvider extends ChangeNotifier {
-  static const List<ModuleProgress> _baseModules = [
-    ModuleProgress(
-      title: 'Money Basics',
-      description:
-          'Discover what money is and how it moves through daily life.',
-      progress: 0.85,
-      icon: Icons.payments_rounded,
-      accent: Color(0xFF006B5F),
-      isLocked: false,
-    ),
-    ModuleProgress(
-      title: 'Saving & Budgeting',
-      description:
-          'Build smart habits with goals, plans, and weekly check-ins.',
-      progress: 0.62,
-      icon: Icons.savings_rounded,
-      accent: Color(0xFF006184),
-      isLocked: false,
-    ),
-    ModuleProgress(
-      title: 'Needs vs Wants',
-      description: 'Practice making stronger spending choices every day.',
-      progress: 0.34,
-      icon: Icons.balance_rounded,
-      accent: Color(0xFFA06600),
-      isLocked: false,
-    ),
-    ModuleProgress(
-      title: 'Mini Investor Lab',
-      description: 'Advanced lessons about growth, patience, and value.',
-      progress: 0.0,
-      icon: Icons.auto_graph_rounded,
-      accent: Color(0xFF6F787F),
-      isLocked: true,
-    ),
-  ];
+  LearningProvider() {
+    _loadModules();
+  }
 
   UserDataProvider? _userDataProvider;
+  List<LessonModule> _modules = const [];
+  bool _isLoading = true;
+
+  List<LessonModule> get modules => _modules;
+  bool get isLoading => _isLoading;
 
   LearningData get _learning =>
-      _userDataProvider?.data?.learning ??
-      AppUserData.initial(email: '', name: 'Alex').learning;
+      _userDataProvider?.data?.learning ?? LearningData.initial();
 
-  List<ModuleProgress> get modules => _baseModules
-      .map(
-        (module) => ModuleProgress(
-          title: module.title,
-          description: module.description,
-          progress: _learning.moduleProgress[module.title] ?? module.progress,
-          icon: module.icon,
-          accent: module.accent,
-          isLocked: module.isLocked,
-        ),
-      )
-      .toList(growable: false);
+  Future<void> _loadModules() async {
+    try {
+      _modules = await LessonRepository.instance.load();
+    } catch (_) {
+      _modules = const [];
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
+  }
 
   void bind(UserDataProvider provider) {
     _userDataProvider = provider;
     notifyListeners();
   }
 
-  Future<void> updateModuleProgress(String title, double progress) async {
-    final updated = Map<String, double>.from(_learning.moduleProgress)
-      ..[title] = progress;
-    await _userDataProvider?.updateLearning(
-      _learning.copyWith(moduleProgress: updated),
+  // ---------- Gate logic ----------
+
+  bool isModuleUnlocked(String moduleId) {
+    if (_modules.isEmpty) return false;
+    final index = _modules.indexWhere((m) => m.id == moduleId);
+    if (index <= 0) return true; // first module always unlocked
+    final previous = _modules[index - 1];
+    return _learning.passedModuleIds.contains(previous.id);
+  }
+
+  bool isModulePassed(String moduleId) =>
+      _learning.passedModuleIds.contains(moduleId);
+
+  double progressFor(String moduleId) =>
+      _learning.moduleProgress[moduleId] ?? 0.0;
+
+  List<String> completedSectionsFor(String moduleId) =>
+      List<String>.from(_learning.completedSectionIds[moduleId] ?? const []);
+
+  double? quizScoreFor(String moduleId) => _learning.quizScores[moduleId];
+
+  bool get allModulesPassed =>
+      _modules.isNotEmpty &&
+      _modules.every((m) => _learning.passedModuleIds.contains(m.id));
+
+  bool get hasCertificate => _learning.certificateIssuedAt != null;
+  String? get certificateIssuedAt => _learning.certificateIssuedAt;
+
+  // ---------- Mutations ----------
+
+  Future<void> markSectionComplete(String moduleId, String sectionId) async {
+    final module = _modules.firstWhere(
+      (m) => m.id == moduleId,
+      orElse: () => throw StateError('Module $moduleId not found'),
     );
+    final current = Set<String>.from(_learning.completedSectionIds[moduleId] ??
+        const <String>[]);
+    if (!current.add(sectionId)) {
+      return; // already complete
+    }
+    final allSectionIds = module.sections.map((s) => s.id).toSet();
+    final sectionsDone = current.intersection(allSectionIds).length;
+    final passed = _learning.passedModuleIds.contains(moduleId);
+    // Each section is 1/totalSteps; quiz counts as the final step.
+    final progress = (sectionsDone + (passed ? 1 : 0)) / module.totalSteps;
+    final completed =
+        Map<String, List<String>>.from(_learning.completedSectionIds)
+          ..[moduleId] = current.toList();
+    final progresses = Map<String, double>.from(_learning.moduleProgress)
+      ..[moduleId] = progress.clamp(0.0, 1.0);
+    await _userDataProvider?.updateLearning(
+      _learning.copyWith(
+        completedSectionIds: completed,
+        moduleProgress: progresses,
+      ),
+    );
+  }
+
+  /// Records a quiz result. Returns true when score is > 50% (the unlock gate).
+  Future<bool> submitQuizResult(String moduleId, double scorePercent) async {
+    final module = _modules.firstWhere(
+      (m) => m.id == moduleId,
+      orElse: () => throw StateError('Module $moduleId not found'),
+    );
+    final passed = scorePercent > 50;
+    final scores = Map<String, double>.from(_learning.quizScores)
+      ..[moduleId] = scorePercent;
+    final passedIds =
+        Set<String>.from(_learning.passedModuleIds);
+    if (passed) {
+      passedIds.add(moduleId);
+    } else {
+      passedIds.remove(moduleId);
+    }
+    final sectionsDone =
+        (_learning.completedSectionIds[moduleId] ?? const <String>[]).length;
+    final progresses = Map<String, double>.from(_learning.moduleProgress);
+    progresses[moduleId] =
+        ((sectionsDone + (passed ? 1 : 0)) / module.totalSteps)
+            .clamp(0.0, 1.0);
+
+    String? certificate = _learning.certificateIssuedAt;
+    final allPassed = _modules.every((m) => passedIds.contains(m.id));
+    if (allPassed && certificate == null) {
+      certificate = DateTime.now().toIso8601String();
+    }
+
+    await _userDataProvider?.updateLearning(
+      _learning.copyWith(
+        quizScores: scores,
+        passedModuleIds: passedIds.toList(),
+        moduleProgress: progresses,
+        certificateIssuedAt: certificate,
+      ),
+    );
+    return passed;
   }
 }

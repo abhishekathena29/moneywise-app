@@ -188,36 +188,87 @@ class DashboardData {
 }
 
 class LearningData {
-  const LearningData({required this.moduleProgress});
+  const LearningData({
+    required this.moduleProgress,
+    required this.completedSectionIds,
+    required this.quizScores,
+    required this.passedModuleIds,
+    required this.certificateIssuedAt,
+  });
 
   final Map<String, double> moduleProgress;
+  final Map<String, List<String>> completedSectionIds;
+  final Map<String, double> quizScores;
+  final List<String> passedModuleIds;
+  final String? certificateIssuedAt;
 
   factory LearningData.initial() {
     return const LearningData(
-      moduleProgress: {
-        'Money Basics': 0.85,
-        'Saving & Budgeting': 0.62,
-        'Needs vs Wants': 0.34,
-        'Mini Investor Lab': 0.0,
-      },
+      moduleProgress: {},
+      completedSectionIds: {},
+      quizScores: {},
+      passedModuleIds: [],
+      certificateIssuedAt: null,
     );
   }
 
   factory LearningData.fromMap(Map<String, dynamic> map) {
-    final source = Map<String, dynamic>.from(
-      map['moduleProgress'] as Map? ?? LearningData.initial().moduleProgress,
+    final progressSource = Map<String, dynamic>.from(
+      map['moduleProgress'] as Map? ?? const {},
+    );
+    final sectionsSource = Map<String, dynamic>.from(
+      map['completedSectionIds'] as Map? ?? const {},
+    );
+    final quizSource = Map<String, dynamic>.from(
+      map['quizScores'] as Map? ?? const {},
     );
     return LearningData(
-      moduleProgress: source.map(
+      moduleProgress: progressSource.map(
         (key, value) => MapEntry(key, (value as num).toDouble()),
       ),
+      completedSectionIds: sectionsSource.map(
+        (key, value) => MapEntry(
+          key,
+          (value as List? ?? const [])
+              .map((item) => item.toString())
+              .toList(),
+        ),
+      ),
+      quizScores: quizSource.map(
+        (key, value) => MapEntry(key, (value as num).toDouble()),
+      ),
+      passedModuleIds: ((map['passedModuleIds'] as List?) ?? const [])
+          .map((item) => item.toString())
+          .toList(),
+      certificateIssuedAt: map['certificateIssuedAt'] as String?,
     );
   }
 
-  Map<String, dynamic> toMap() => {'moduleProgress': moduleProgress};
+  Map<String, dynamic> toMap() => {
+        'moduleProgress': moduleProgress,
+        'completedSectionIds': completedSectionIds,
+        'quizScores': quizScores,
+        'passedModuleIds': passedModuleIds,
+        'certificateIssuedAt': certificateIssuedAt,
+      };
 
-  LearningData copyWith({Map<String, double>? moduleProgress}) {
-    return LearningData(moduleProgress: moduleProgress ?? this.moduleProgress);
+  LearningData copyWith({
+    Map<String, double>? moduleProgress,
+    Map<String, List<String>>? completedSectionIds,
+    Map<String, double>? quizScores,
+    List<String>? passedModuleIds,
+    String? certificateIssuedAt,
+    bool clearCertificate = false,
+  }) {
+    return LearningData(
+      moduleProgress: moduleProgress ?? this.moduleProgress,
+      completedSectionIds: completedSectionIds ?? this.completedSectionIds,
+      quizScores: quizScores ?? this.quizScores,
+      passedModuleIds: passedModuleIds ?? this.passedModuleIds,
+      certificateIssuedAt: clearCertificate
+          ? null
+          : (certificateIssuedAt ?? this.certificateIssuedAt),
+    );
   }
 }
 

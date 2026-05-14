@@ -11,6 +11,9 @@ enum AppRoute {
   dashboard,
   learningModules,
   lessonDetail,
+  lessonQuiz,
+  certificate,
+  chatbot,
   toolsHub,
   monthlyTracker,
   savingsGoalCalculator,
@@ -30,10 +33,12 @@ class NavigationProvider extends ChangeNotifier {
   AppRoute _currentRoute = AppRoute.splash;
   MainTab _activeTab = MainTab.home;
   String? _selectedLessonTitle;
+  String? _selectedModuleId;
 
   AppRoute get currentRoute => _currentRoute;
   MainTab get activeTab => _activeTab;
   String? get selectedLessonTitle => _selectedLessonTitle;
+  String? get selectedModuleId => _selectedModuleId;
 
   void goTo(AppRoute route) {
     _currentRoute = route;
@@ -43,6 +48,28 @@ class NavigationProvider extends ChangeNotifier {
   void openLesson(String lessonTitle) {
     _selectedLessonTitle = lessonTitle;
     _currentRoute = AppRoute.lessonDetail;
+    notifyListeners();
+  }
+
+  void openModule(String moduleId) {
+    _selectedModuleId = moduleId;
+    _currentRoute = AppRoute.lessonDetail;
+    notifyListeners();
+  }
+
+  void openQuiz(String moduleId) {
+    _selectedModuleId = moduleId;
+    _currentRoute = AppRoute.lessonQuiz;
+    notifyListeners();
+  }
+
+  void openCertificate() {
+    _currentRoute = AppRoute.certificate;
+    notifyListeners();
+  }
+
+  void openChatbot() {
+    _currentRoute = AppRoute.chatbot;
     notifyListeners();
   }
 
@@ -113,6 +140,9 @@ class NavigationProvider extends ChangeNotifier {
       AppRoute.dashboard,
       AppRoute.learningModules,
       AppRoute.lessonDetail,
+      AppRoute.lessonQuiz,
+      AppRoute.certificate,
+      AppRoute.chatbot,
       AppRoute.toolsHub,
       AppRoute.monthlyTracker,
       AppRoute.savingsGoalCalculator,
