@@ -50,6 +50,10 @@ class LearningModulesScreen extends StatelessWidget {
                         ..._buildModuleCards(context, learning),
                       const SizedBox(height: 32),
                       _DailyChallengeCard(learning: learning),
+                      const SizedBox(height: 20),
+                      const _CertificatePoster(),
+                      const SizedBox(height: 16),
+                      const _CertificateTestButton(),
                     ]),
                   ),
                 ),
@@ -697,6 +701,143 @@ class _CardAction extends StatelessWidget {
                 ),
               ),
             ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _CertificatePoster extends StatelessWidget {
+  const _CertificatePoster();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(24),
+        gradient: const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [Color(0xFFFFDDB7), Color(0xFFFFB95C)],
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xFF7F5000).withValues(alpha: .2),
+            blurRadius: 20,
+            offset: const Offset(0, 10),
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+          Container(
+            width: 56,
+            height: 56,
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.circle,
+            ),
+            child: const Icon(
+              Icons.workspace_premium_rounded,
+              color: Color(0xFF7F5000),
+              size: 30,
+            ),
+          ),
+          const SizedBox(width: 14),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Earn your certificate',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w800,
+                    color: Color(0xFF111C2C),
+                    letterSpacing: -0.2,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                const Text(
+                  'Complete every module quiz to unlock and download your MoneyWise Junior certificate.',
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Color(0xFF7F5000),
+                    fontWeight: FontWeight.w500,
+                    height: 1.4,
+                  ),
+                ),
+                const SizedBox(height: 12),
+                Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(999),
+                    onTap: () => context
+                        .read<NavigationProvider>()
+                        .openCertificate(),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 14, vertical: 8),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF7F5000),
+                        borderRadius: BorderRadius.circular(999),
+                      ),
+                      child: const Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(Icons.download_rounded,
+                              color: Colors.white, size: 14),
+                          SizedBox(width: 6),
+                          Text(
+                            'Download Certificate',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w800,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _CertificateTestButton extends StatelessWidget {
+  const _CertificateTestButton();
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      child: OutlinedButton.icon(
+        style: OutlinedButton.styleFrom(
+          padding: const EdgeInsets.symmetric(vertical: 14),
+          side: const BorderSide(color: Color(0xFFC4E7FF), width: 1.5),
+          foregroundColor: const Color(0xFF006184),
+          backgroundColor: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(14),
+          ),
+        ),
+        onPressed: () => context
+            .read<NavigationProvider>()
+            .openCertificate(preview: true),
+        icon: const Icon(Icons.science_rounded, size: 18),
+        label: const Text(
+          'Test: Preview Certificate',
+          style: TextStyle(
+            fontWeight: FontWeight.w800,
+            fontSize: 13,
           ),
         ),
       ),

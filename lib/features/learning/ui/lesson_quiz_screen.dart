@@ -183,7 +183,7 @@ class _Header extends StatelessWidget {
         children: [
           IconButton(
             onPressed: () =>
-                context.read<NavigationProvider>().openModule(module.id),
+                context.read<NavigationProvider>().openTab(MainTab.lessons),
             icon: const Icon(Icons.arrow_back_rounded,
                 color: Color(0xFF111C2C)),
           ),

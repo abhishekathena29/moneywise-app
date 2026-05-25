@@ -12,12 +12,14 @@ class CertificateScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final auth = context.watch<AuthProvider>();
     final learning = context.watch<LearningProvider>();
+    final nav = context.watch<NavigationProvider>();
     final issuedAt = learning.certificateIssuedAt;
     final earned = learning.allModulesPassed && issuedAt != null;
+    final preview = nav.certificatePreview;
+    final showCertificate = earned || preview;
     final issuedDate = issuedAt == null
-        ? null
+        ? DateTime.now()
         : DateTime.tryParse(issuedAt) ?? DateTime.now();
-    final averageScore = _averageScore(learning);
 
     return Scaffold(
       backgroundColor: const Color(0xFFF9F9FF),
@@ -49,13 +51,13 @@ class CertificateScreen extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: earned
+              child: showCertificate
                   ? _Issued(
                       name: auth.userName.isEmpty
                           ? 'MoneyWise Junior'
                           : auth.userName,
-                      issuedDate: issuedDate!,
-                      averageScore: averageScore,
+                      issuedDate: issuedDate,
+                      isPreview: preview && !earned,
                     )
                   : _Locked(learning: learning),
             ),
@@ -64,211 +66,242 @@ class CertificateScreen extends StatelessWidget {
       ),
     );
   }
-
-  double _averageScore(LearningProvider l) {
-    final scores = l.modules
-        .map((m) => l.quizScoreFor(m.id))
-        .whereType<double>()
-        .toList();
-    if (scores.isEmpty) return 0;
-    return scores.reduce((a, b) => a + b) / scores.length;
-  }
 }
 
 class _Issued extends StatelessWidget {
   const _Issued({
     required this.name,
     required this.issuedDate,
-    required this.averageScore,
+    required this.isPreview,
   });
   final String name;
   final DateTime issuedDate;
-  final double averageScore;
+  final bool isPreview;
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(20, 12, 20, 24),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(28),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(28),
-              gradient: const LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [Color(0xFFFFDDB7), Color(0xFFFFB95C)],
+          if (isPreview)
+            Container(
+              width: double.infinity,
+              margin: const EdgeInsets.only(bottom: 14),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+              decoration: BoxDecoration(
+                color: const Color(0xFFFFF6E5),
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(color: const Color(0xFFFFDDB7)),
               ),
-              boxShadow: [
-                BoxShadow(
-                  color: const Color(0xFF7F5000).withValues(alpha: .2),
-                  blurRadius: 30,
-                  offset: const Offset(0, 14),
-                ),
-              ],
-            ),
-            child: Column(
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(16),
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    shape: BoxShape.circle,
-                  ),
-                  child: const Icon(
-                    Icons.workspace_premium_rounded,
-                    size: 48,
-                    color: Color(0xFF7F5000),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                const Text(
-                  'CERTIFICATE OF COMPLETION',
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w800,
-                    color: Color(0xFF7F5000),
-                    letterSpacing: 2,
-                  ),
-                ),
-                const SizedBox(height: 14),
-                const Text(
-                  'This is to certify that',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Color(0xFF7F5000),
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  name,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontSize: 26,
-                    fontWeight: FontWeight.w800,
-                    color: Color(0xFF111C2C),
-                    height: 1.2,
-                    letterSpacing: -0.5,
-                  ),
-                ),
-                const SizedBox(height: 10),
-                const Text(
-                  'has successfully completed every module of\nthe MoneyWise Junior financial literacy program.',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: Color(0xFF111C2C),
-                    height: 1.5,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                const SizedBox(height: 22),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    _Stat(
-                      label: 'Score',
-                      value: '${averageScore.toStringAsFixed(0)}%',
+              child: const Row(
+                children: [
+                  Icon(Icons.science_rounded,
+                      size: 18, color: Color(0xFF7F5000)),
+                  SizedBox(width: 8),
+                  Expanded(
+                    child: Text(
+                      'Preview mode — complete every module quiz to earn this for real.',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xFF7F5000),
+                      ),
                     ),
-                    _Stat(
-                      label: 'Issued',
-                      value:
-                          '${_pad(issuedDate.day)}/${_pad(issuedDate.month)}/${issuedDate.year}',
+                  ),
+                ],
+              ),
+            ),
+          _CertificateCard(name: name, issuedDate: issuedDate),
+          const SizedBox(height: 20),
+          Row(
+            children: [
+              Expanded(
+                child: ElevatedButton.icon(
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    backgroundColor: const Color(0xFF006184),
+                    foregroundColor: Colors.white,
+                    elevation: 0,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(999),
                     ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 22),
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(18),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  'You earned this for:',
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: Color(0xFF006184),
-                    fontWeight: FontWeight.w800,
-                    letterSpacing: 0.4,
+                  ),
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content:
+                            Text('Download will be available soon.'),
+                        behavior: SnackBarBehavior.floating,
+                      ),
+                    );
+                  },
+                  icon: const Icon(Icons.download_rounded, size: 18),
+                  label: const Text(
+                    'Download',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w800,
+                      fontSize: 14,
+                    ),
                   ),
                 ),
-                const SizedBox(height: 12),
-                _bullet('Completing all 6 financial-literacy modules'),
-                _bullet('Scoring above 50% on every module quiz'),
-                _bullet('Building real money habits along the way'),
-              ],
-            ),
+              ),
+              const SizedBox(width: 12),
+              Expanded(
+                child: OutlinedButton.icon(
+                  style: OutlinedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    side: const BorderSide(color: Color(0xFFC4E7FF)),
+                    foregroundColor: const Color(0xFF006184),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(999),
+                    ),
+                  ),
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Share will be available soon.'),
+                        behavior: SnackBarBehavior.floating,
+                      ),
+                    );
+                  },
+                  icon: const Icon(Icons.share_rounded, size: 18),
+                  label: const Text(
+                    'Share',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w800,
+                      fontSize: 14,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),
     );
   }
-
-  Widget _bullet(String text) => Padding(
-        padding: const EdgeInsets.only(bottom: 8),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Icon(Icons.check_circle_rounded,
-                color: Color(0xFF006B5F), size: 18),
-            const SizedBox(width: 10),
-            Expanded(
-              child: Text(
-                text,
-                style: const TextStyle(
-                  fontSize: 13,
-                  color: Color(0xFF111C2C),
-                  fontWeight: FontWeight.w500,
-                  height: 1.5,
-                ),
-              ),
-            ),
-          ],
-        ),
-      );
-
-  String _pad(int n) => n.toString().padLeft(2, '0');
 }
 
-class _Stat extends StatelessWidget {
-  const _Stat({required this.label, required this.value});
-  final String label;
-  final String value;
+class _CertificateCard extends StatelessWidget {
+  const _CertificateCard({required this.name, required this.issuedDate});
+  final String name;
+  final DateTime issuedDate;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(
-          label.toUpperCase(),
-          style: const TextStyle(
-            fontSize: 10,
-            color: Color(0xFF7F5000),
-            fontWeight: FontWeight.w800,
-            letterSpacing: 1.4,
+    return Container(
+      clipBehavior: Clip.antiAlias,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(16),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: .08),
+            blurRadius: 24,
+            offset: const Offset(0, 10),
           ),
+        ],
+      ),
+      child: AspectRatio(
+        aspectRatio: 994 / 720,
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final width = constraints.maxWidth;
+            return Stack(
+              children: [
+                Positioned.fill(
+                  child: Image.asset(
+                    'assets/images/certificate.png',
+                    fit: BoxFit.cover,
+                    errorBuilder: (_, _, _) =>
+                        const _CertificateFallback(),
+                  ),
+                ),
+                // Student name overlay — covers the "[Student Name]"
+                // placeholder text on the underlying certificate art.
+                Positioned(
+                  left: width * 0.20,
+                  right: width * 0.04,
+                  top: width * (720 / 994) * 0.31,
+                  height: width * (720 / 994) * 0.13,
+                  child: Container(
+                    color: Colors.white,
+                    alignment: Alignment.centerLeft,
+                    padding: EdgeInsets.only(left: width * 0.01),
+                    child: FittedBox(
+                      alignment: Alignment.centerLeft,
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        name,
+                        maxLines: 1,
+                        style: const TextStyle(
+                          fontSize: 56,
+                          fontWeight: FontWeight.w800,
+                          color: Color(0xFF1F3A8A),
+                          letterSpacing: -0.5,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                // Date overlay — covers the static "10-04-2026" date on
+                // the certificate art with the actual issue date.
+                Positioned(
+                  left: width * 0.10,
+                  width: width * 0.30,
+                  top: width * (720 / 994) * 0.875,
+                  height: width * (720 / 994) * 0.045,
+                  child: Container(
+                    color: Colors.white,
+                    alignment: Alignment.centerLeft,
+                    child: FittedBox(
+                      alignment: Alignment.centerLeft,
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        'Date : ${_formatDate(issuedDate)}',
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500,
+                          color: Color(0xFF111C2C),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            );
+          },
         ),
-        const SizedBox(height: 4),
-        Text(
-          value,
-          style: const TextStyle(
-            fontSize: 16,
-            color: Color(0xFF111C2C),
-            fontWeight: FontWeight.w800,
-          ),
+      ),
+    );
+  }
+
+  static String _formatDate(DateTime d) =>
+      '${_pad(d.day)}-${_pad(d.month)}-${d.year}';
+  static String _pad(int n) => n.toString().padLeft(2, '0');
+}
+
+class _CertificateFallback extends StatelessWidget {
+  const _CertificateFallback();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: const Color(0xFFF0F3FF),
+      alignment: Alignment.center,
+      padding: const EdgeInsets.all(20),
+      child: const Text(
+        'Certificate art missing.\nAdd assets/images/certificate.png',
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontSize: 13,
+          color: Color(0xFF3F484E),
+          fontWeight: FontWeight.w600,
         ),
-      ],
+      ),
     );
   }
 }

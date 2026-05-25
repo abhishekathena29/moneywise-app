@@ -34,11 +34,13 @@ class NavigationProvider extends ChangeNotifier {
   MainTab _activeTab = MainTab.home;
   String? _selectedLessonTitle;
   String? _selectedModuleId;
+  bool _certificatePreview = false;
 
   AppRoute get currentRoute => _currentRoute;
   MainTab get activeTab => _activeTab;
   String? get selectedLessonTitle => _selectedLessonTitle;
   String? get selectedModuleId => _selectedModuleId;
+  bool get certificatePreview => _certificatePreview;
 
   void goTo(AppRoute route) {
     _currentRoute = route;
@@ -63,8 +65,9 @@ class NavigationProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void openCertificate() {
+  void openCertificate({bool preview = false}) {
     _currentRoute = AppRoute.certificate;
+    _certificatePreview = preview;
     notifyListeners();
   }
 
